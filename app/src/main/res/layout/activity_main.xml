@@ -12,5 +12,4 @@
         tools:listitem="@layout/item_monan">
 
     </androidx.recyclerview.widget.RecyclerView>
-
 </LinearLayout>
