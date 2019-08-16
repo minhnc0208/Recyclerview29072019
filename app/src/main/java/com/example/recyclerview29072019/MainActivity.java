@@ -3,6 +3,7 @@ package com.example.recyclerview29072019;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,12 +33,14 @@ public class MainActivity extends AppCompatActivity implements HandleClick {
             public void onClick(View v, int position) {
                 if (position >= 0)
                     Log.d("BBB", position + "");
+                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onLongClick(View v1, int position1) {
                 if (position1 >= 0) {
-                    Log.d("BBB", "Bạn đã click vào dòng" + position1);
+                    Log.d("BBB", "Bạn đã click vào dòng " + position1);
+                    Toast.makeText(MainActivity.this, "Bạn đã click vào dòng " + position1, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -60,6 +63,6 @@ public class MainActivity extends AppCompatActivity implements HandleClick {
 
     @Override
     public void onLongClick(View v1, int position1) {
-        Log.d("BBB", "Bạn đã click vào dòng" + position1);
+        Log.d("BBB", "Bạn đã click vào dòng " + position1);
     }
 }
