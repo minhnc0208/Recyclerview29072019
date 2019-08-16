@@ -1,6 +1,5 @@
 package com.example.recyclerview29072019;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,11 @@ public class MonanAdapter extends RecyclerView.Adapter<MonanAdapter.MonanHolder>
 
     ArrayList<Monan> mangmonan;
 
+    HandleClick handleClick;
+
     public MonanAdapter(ArrayList<Monan> mangmonan) {
         this.mangmonan = mangmonan;
+
     }
 
     @NonNull
@@ -48,7 +50,7 @@ public class MonanAdapter extends RecyclerView.Adapter<MonanAdapter.MonanHolder>
         TextView txtTen, txtGia;
         ImageView imgHinhanh;
 
-        public MonanHolder(@NonNull View itemView) {
+        public MonanHolder(@NonNull final View itemView) {
             super(itemView);
             txtGia = itemView.findViewById(R.id.textviewGia);
             txtTen = itemView.findViewById(R.id.textviewTen);
@@ -58,9 +60,22 @@ public class MonanAdapter extends RecyclerView.Adapter<MonanAdapter.MonanHolder>
                 public void onClick(View v) {
 //                    Log.d("BBB", getPosition() + "");// get position: trả về vị trí hiện tại
                     int position = (int) v.getTag();
-                    Log.d("BBB", position + "");
+//                    Log.d("BBB", position + "");
+                    handleClick.onClick(itemView, position);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v1) {
+                    int position1 = (int) v1.getTag();
+                    handleClick.onLongClick(v1, position1);
+                    return false;
                 }
             });
         }
+    }
+
+    public void listen(HandleClick handleClick) {
+        this.handleClick = handleClick;
     }
 }

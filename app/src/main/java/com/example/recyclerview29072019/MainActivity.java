@@ -1,6 +1,7 @@
 package com.example.recyclerview29072019;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HandleClick {
     RecyclerView recyclerView;
     ArrayList<Monan> monans;
     MonanAdapter monanAdapter;
@@ -26,6 +27,22 @@ public class MainActivity extends AppCompatActivity {
         monans.add(new Monan("Cá Kho", 35000, R.drawable.cakho));
         monans.add(new Monan("Cá Kho", 35000, R.drawable.cakho));
         monanAdapter = new MonanAdapter(monans);
+        monanAdapter.listen(new HandleClick() {
+            @Override
+            public void onClick(View v, int position) {
+                if (position >= 0)
+                    Log.d("BBB", position + "");
+            }
+
+            @Override
+            public void onLongClick(View v1, int position1) {
+                if (position1 >= 0) {
+                    Log.d("BBB", "Bạn đã click vào dòng" + position1);
+                }
+            }
+        });
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(monanAdapter);
         recyclerView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -34,5 +51,15 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onClick(View v, int position) {
+        Log.d("BBB", position + "");
+    }
+
+    @Override
+    public void onLongClick(View v1, int position1) {
+        Log.d("BBB", "Bạn đã click vào dòng" + position1);
     }
 }
