@@ -1,5 +1,6 @@
 package com.example.recyclerview29072019;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +31,12 @@ public class MonanAdapter extends RecyclerView.Adapter<MonanAdapter.MonanHolder>
     @Override
     public void onBindViewHolder(@NonNull MonanHolder holder, int position) {
         Monan monan = mangmonan.get(position);
+        holder.itemView.setTag(position);
         holder.txtTen.setText(monan.getTen());
-        holder.txtGia.setText(monan.getGia() +"");
+        holder.txtGia.setText(monan.getGia() + "");
         holder.imgHinhanh.setImageResource(monan.getHinhanh());
     }
+
 
     @Override
     public int getItemCount() {
@@ -50,6 +53,14 @@ public class MonanAdapter extends RecyclerView.Adapter<MonanAdapter.MonanHolder>
             txtGia = itemView.findViewById(R.id.textviewGia);
             txtTen = itemView.findViewById(R.id.textviewTen);
             imgHinhanh = itemView.findViewById(R.id.imageItemMonan);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Log.d("BBB", getPosition() + "");// get position: trả về vị trí hiện tại
+                    int position = (int) v.getTag();
+                    Log.d("BBB", position + "");
+                }
+            });
         }
     }
 }

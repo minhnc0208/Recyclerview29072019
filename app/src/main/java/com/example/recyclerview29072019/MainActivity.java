@@ -1,6 +1,7 @@
 package com.example.recyclerview29072019;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         monanAdapter = new MonanAdapter(monans);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(monanAdapter);
-
+        recyclerView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return false;
+            }
+        });
     }
 }
