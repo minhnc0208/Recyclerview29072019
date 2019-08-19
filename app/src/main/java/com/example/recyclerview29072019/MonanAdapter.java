@@ -74,7 +74,10 @@ public class MonanAdapter extends RecyclerView.Adapter<MonanAdapter.MonanHolder>
             });
         }
     }
-
+    public void addMonAn(Monan monan){
+        mangmonan.add(monan);
+        notifyDataSetChanged();
+    }
     public void listen(HandleClick handleClick) {
         this.handleClick = handleClick;
     }

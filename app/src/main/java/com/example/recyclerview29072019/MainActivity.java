@@ -38,12 +38,16 @@ public class MainActivity extends AppCompatActivity implements HandleClick {
 
             @Override
             public void onLongClick(View v1, int position1) {
-                if (position1 >= 0) {
-                    Log.d("BBB", "Bạn đã click vào dòng " + position1);
-                    Toast.makeText(MainActivity.this, "Bạn đã click vào dòng " + position1, Toast.LENGTH_SHORT).show();
-                }
+               monanAdapter.addMonAn(new Monan("Cá kho 2",40000,R.drawable.cakho));
+
+//                Log.d("BBB",monans.size()+"");
+//                if (position1 >= 0) {
+//                    Log.d("BBB", "Bạn đã click vào dòng " + position1);
+//                    Toast.makeText(MainActivity.this, "Bạn đã click vào dòng " + position1, Toast.LENGTH_SHORT).show();
+//                }
             }
         });
+
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
